@@ -20,8 +20,8 @@ const Register = (props) => {
 
     if (user.password !== user.password2) {
       return setPasswordError(
-        <p className="passwordError">
-          <i class="fas fa-exclamation-triangle" /> Las contraseñas no
+        <p classNameName="passwordError">
+          <i className="fas fa-exclamation-triangle" /> <br/>Las contraseñas no
           coinciden.
         </p>
       );
@@ -30,7 +30,7 @@ const Register = (props) => {
     register(user)
             .then(() => {
                 setTimeout(() => {
-                    //props.history.push('/login')
+                    props.history.push('/')
                 }, 1000);
             })
             .catch(error => {
@@ -41,117 +41,40 @@ const Register = (props) => {
     
   };
   return (
-    <form onSubmit={onSubmit}>
-      <div className="contenedor">
-        <div className="contenedor_login">
-          <h2 className="h2-box">Ya estas registrado? Logeate!</h2>
-          <button className="btn_logged">LOGEATE</button>
-        </div>
-        <div className="contenedor_registro">
-          <h2 className="h2-box">
-            Rellena los datos, para unirte a la mejor comunidad de viajes!
-          </h2>
-          <div className="form__group field">
-            <input
-              type="input"
-              className="form__field"
-              placeholder="Name"
-              name="name"
-              id="name"
-              required
-            />
-            <label htmlFor="name" className="form__label">
-              Nombre
-            </label>
-          </div>
-          <div className="form__group field">
-            <input
-              type="input"
-              className="form__field"
-              placeholder="Surname"
-              name="surname"
-              id="surname"
-              required
-            />
-            <label htmlFor="surname" className="form__label">
-              Apellidos
-            </label>
-          </div>
-          <div className="form__group field">
-            <input
-              type="input"
-              className="form__field"
-              placeholder="Email"
-              name="email"
-              id="email"
-              required
-            />
-            <label htmlFor="email" className="form__label">
-              Email
-            </label>
-          </div>
-          <div className="form__group field">
-            <input
-              type="date"
-              className="form__field"
-              placeholder="Fecha de nacimiento"
-              name="birthdate"
-              id="birthdate"
-              required
-            />
-            <label htmlFor="birthdate" className="form__label">
-              Fecha de nacimiento
-            </label>
-          </div>
-          <div className="form__group field">
-            <input
-              type="password"
-              minLength="8"
-              className="form__field"
-              placeholder="Contraseña"
-              name="password"
-              id="password"
-              required
-            />
-            <label htmlFor="password" className="form__label">
-              Contraseña
-            </label>
-          </div>
-          <div className="form__group field">
-            <input
-              type="password"
-              minLength="8"
-              className="form__field"
-              placeholder="Contraseña"
-              name="password2"
-              id="password2"
-              required
-            />
-            <label htmlFor="password2" className="form__label">
-              Repite la contraseña
-            </label>
-          </div>
-          <span>{passwordError}</span>
-    
-          <div className="form__group field">
-            <input
-              type="input"
-              
-              className="form__field"
-              placeholder="genero"
-              name="gender"
-              id="gender"
-              required
-            />
-            <label htmlFor="gender" className="form__label">
-              Male o female
-            </label>
-          </div>
-          <button className="btn_logged" type="submit">
-            REGISTRATE
-          </button>
-        </div>
-      </div>
+    <form onSubmit={onSubmit} className="signup-form">
+     
+    <h2>Registro</h2>
+		<p className="hint-text">Crea tu cuenta. Es gratis y tardas menos de un minuto.</p>
+    <div className="form-group">
+			<div className="row">
+				<div className="col"><input type="text" className="form-control" name="name" placeholder="Nombre" required="required"/></div>
+				<div className="col"><input type="text" className="form-control" name="surname" placeholder="Apellidos" required="required"/></div>
+			</div>        	
+    </div>
+    <div className="form-group">
+      <input type="email" className="form-control" name="email" placeholder="Correo electrónico" required="required"/>
+    </div>
+    <div className="form-group">
+			<div className="row">
+				<div className="col"><input type="text" className="form-control" name="gender" placeholder="Género" required="required"/></div>
+				<div className="col"><input type="date" className="form-control" name="birthdate" placeholder="Fecha de nacimiento" required="required"/></div>
+			</div>        	
+    </div>
+    <div className="row">
+			<div className="col"><input type="password" id="password" name="password" className="form-control" name="first_name" placeholder="Introduce tu contraseña" required="required"/></div>
+			<div className="col"><input type="password" id="password2" name="password2" className="form-control" name="last_name" placeholder="Repite tu contraseña" required="required"/></div>
+      
+		</div> 
+    <div className="form-group hint-text">
+			<label className="form-check-label"><input type="checkbox" required="required" className="hint-text"/> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+		</div>
+		<div className="form-group">
+      <button type="submit" className="btn btn-success btn-lg btn-block">Register Now</button>
+    </div>
+    <div className="row">
+      <span>{passwordError}</span>
+    </div>   
+                     
     </form>
   );
 };
