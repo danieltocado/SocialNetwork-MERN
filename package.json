@@ -1,0 +1,22 @@
+{
+  "name": "SocialNetwork-MERN",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js --prefix server",
+  "scripts": {
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieltocado/SocialNetwork-MERN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danieltocado/SocialNetwork-MERN/issues"
+  },
+  "homepage": "https://github.com/danieltocado/SocialNetwork-MERN#readme"
+}
