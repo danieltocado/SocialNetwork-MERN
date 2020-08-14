@@ -13,14 +13,14 @@ const Login = (props) => {
     };
 
     login(credentials)
-      .then(() => {
-        setTimeout(() => {
-          //props.history.push('/')
-        }, 1000);
-      })
-      .catch((error) => {
-        //
-      });
+            .then(() => {
+                setTimeout(() => {
+                    props.history.push('/')
+                }, 1000);
+            })
+            .catch(error => {
+                //
+            });
     console.log(credentials);
   };
 
