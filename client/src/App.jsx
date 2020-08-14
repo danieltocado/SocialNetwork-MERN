@@ -12,7 +12,9 @@ import Footer from './components/footer/footer.jsx'
 import Register from './containers/register/register.jsx'
 import Login from './containers/login/login.jsx'
 import Home from './containers/home/home.jsx'
-import HomeRegister from "./components/home-register/home-register";
+import HomeRegister from "./components/home-register/home-register.jsx";
+import Index from "./containers/index/index.jsx";
+import FileUpload from "./containers/fileupload/fileupload.jsx"
 
 
 function App() {
@@ -32,9 +34,10 @@ function App() {
     <Switch>
       <Route path="/" exact component={Home} /> 
       <Route path="/home-register" exact component={HomeRegister} /> 
+      <Route path="/home" exact component={Index} /> 
       <Route path="/login" exact component={Login} />
       <Route path="/register" exact component={Register} />
-     
+      <Route path="/upload" exact component={FileUpload} />
 
     </Switch>
     
