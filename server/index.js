@@ -31,12 +31,13 @@ app.use(
   
 //Routers
 const userRouter = require("./routes/users"); 
+const uploadRouter = require("./routes/uploads"); 
 
 //Endpoints Router
 app.use("/users", userRouter);
-//app.use("/upload", uploadRouter);
+//app.use("/files", uploadRouter);
 
-app.post('/upload', (req, res) => {
+app.post('/files/upload', (req, res) => {
   
   if(req.files === null) {
     return res.status(400).json({ message: 'No file was uploaded'})

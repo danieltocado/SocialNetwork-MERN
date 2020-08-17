@@ -6,7 +6,7 @@ import { UPLOADED_FILE } from '../types/files';
 
 export const upload = async (file) => {
     try {
-        const res = await axios.post('upload', file);
+        const res = await axios.post('files/upload', file);
 
         store.dispatch({
             type: UPLOADED_FILE
