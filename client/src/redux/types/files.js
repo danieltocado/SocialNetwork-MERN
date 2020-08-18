@@ -1,1 +1,0 @@
-export const UPLOADED_FILE = 'UPLOADED_FILE';
