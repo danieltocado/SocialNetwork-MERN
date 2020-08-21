@@ -1,18 +1,23 @@
 const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
+
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        trim: true,
+        required: 'Name is required',
     },
     surname: {
         type: String,
-        required: true,
+        trim: true,
+        required: 'Surname is required',
     },
     email: {
         type: String,
-        required: true,
-        unique: true,
+        trim: true,
+        required: 'Email is required',
+        unique: 'Email must be unique',
     },
     birthdate: {
         type: Date,
@@ -30,7 +35,10 @@ const UserSchema = new mongoose.Schema({
     tokens: {
         type: [String],
     },
+    posts: { type: [Schema.ObjectId], ref:'Post' }
 });
+
+
 
 const User = mongoose.model('User', UserSchema)
 

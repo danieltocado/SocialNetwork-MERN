@@ -49,7 +49,7 @@ const UserController = {
         {
           _id: user._id,
         },
-        "SecretoKAD"
+        "SECRET"
       );
 
       await User.findByIdAndUpdate(user._id, {
@@ -89,15 +89,13 @@ const UserController = {
 
   async logout(req, res) {
     try {
-      await User.findByIdAndUpdate(req.user._id, {
+      const user = await User.findByIdAndUpdate(req.user._id, {
         $pull: {
           tokens: req.headers.authorization,
         },
       });
 
-      res.send({
-        message: "Te has deslogeado con éxito.",
-      });
+      res.send({message: "Te has deslogeado con éxito.", user});
     } catch (error) {
       console.error(error);
       res.status(500).send({
@@ -156,9 +154,22 @@ const UserController = {
       });
     }
   },
+
   getInfo(req, res) {
     res.send(req.user);
-}
+  },
+
+  async getAll(req, res) {
+    try {
+      const users = await User.find().populate({path: 'posts'})
+      res.send(users);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({
+        message: "Ha habido un problema al obtener todos los usuarios.",
+      });
+    }
+  },
 };
 
 module.exports = UserController;
