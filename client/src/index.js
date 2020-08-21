@@ -7,14 +7,19 @@ import './config/axios';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
+import history from "./history";
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-    <App />
-    </Provider>
-  </React.StrictMode>,
+  <BrowserRouter >
+<React.StrictMode>
+  <Provider store={store} >
+    <App/>
+  </Provider>
+</ React.StrictMode >
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

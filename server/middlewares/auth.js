@@ -4,7 +4,7 @@ const User = require("../models/User.js");
 const auth = async (req,res,next) => {
     try {
         const token = req.headers.authorization;
-        jwt.verify(token, 'SecretoKAD');
+        jwt.verify(token, 'SECRET');
         
         const user = await User.findOne({
             tokens: token,
@@ -28,3 +28,4 @@ const auth = async (req,res,next) => {
 }
 
 module.exports = auth;
+

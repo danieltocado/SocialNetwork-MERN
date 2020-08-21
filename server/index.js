@@ -25,35 +25,21 @@ app.use(
   })
   );
   
-  app.use(express.json());
+app.use(express.json());
   
-  app.use(cors);
+app.use(cors);
   
 //Routers
-const userRouter = require("./routes/users"); 
-const uploadRouter = require("./routes/uploads"); 
+const userRouter = require("./routes/users");
+const followRouter = require("./routes/follows") ;
+const postRouter = require("./routes/posts"); 
 
 //Endpoints Router
 app.use("/users", userRouter);
-//app.use("/files", uploadRouter);
+app.use("/users", followRouter);
+app.use("/post", postRouter);
 
-app.post('/files/upload', (req, res) => {
-  
-  if(req.files === null) {
-    return res.status(400).json({ message: 'No file was uploaded'})
-  }
 
-  const file = req.files.file;
-
-  file.mv(`../client/public/uploads/${file.name}`, err => {
-    if(err) {
-      console.error(err);
-      return res.status(500).send(err);
-    }
-
-    res.json({ file_name: file.name, file_path: `/uploads/${file.name}`})
-  })
-})
 
 //Server up
 app.listen(PORT, () => console.log(">>> SERVER ONLINE ON PORT " + PORT + "."));
