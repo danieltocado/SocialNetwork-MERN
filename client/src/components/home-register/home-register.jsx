@@ -26,26 +26,17 @@ class HomeRegister extends React.Component {
   render() {
     return (
 
-<div class="mask rgba-gradient align-items-center">
+<div className="mask rgba-gradient align-items-center">
               
-              <div class="container">
+              <div className="container">
                
-                <div class="row mt-6">
-                 
-                  <div class="col-md-6 mt-md-0 mt-5  text-center text-md-left">
-                    <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h1>
-                    <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s"/>
-                    <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga
-                    nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea
-                    dolor molestiae, quisquam iste, maiores. Nulla.</h6>
-                    <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s">Learn more</a>
-                  </div>
-               
-                  <div class="col-md-6 col-xl-5 mb-4 black-text">
-                   
-                    <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                <div className="row mt-6">
 
-                      <div class="card-body register-card">
+                  <div className="col-md-8 col-xl-12 mb-4 black-text">
+                   
+                    <div className="card wow fadeInRight" data-wow-delay="0.3s">
+
+                      <div className="card-body register-card">
            
                         <Register/>
                         

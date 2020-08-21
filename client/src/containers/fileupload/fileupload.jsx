@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
-import { upload } from "../../redux/actions/files";
+//import { upload } from "../../redux/actions/files";
 import Message from "./message.jsx"
 
 import "./fileupload.scss";
@@ -20,7 +20,7 @@ const FileUpload = () => {
 
   const onSubmit = async e => {
       e.preventDefault();
-      const file2 = {
+      const file = {
         file: e.target.file.value,
         file_name: e.target.file_name.value,
         file_description: e.target.file_description.value,
@@ -51,7 +51,7 @@ const FileUpload = () => {
           }
       }
 
-      upload(file2)
+     // upload(file)
               
       console.log(file);
   }
