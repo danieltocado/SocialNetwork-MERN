@@ -1,6 +1,8 @@
 import { createStore, compose, applyMiddleware } from 'redux';
+import storeSynchronize from 'redux-localstore'
 
-import reducer from './reducers';
+
+import reducer from './reducers/user';
 
 import { save, load } from 'redux-localstorage-simple';
 
@@ -15,5 +17,7 @@ const store = createStoreWithMiddleware(
     load(),
     composeEnhancers(),
 );
+
+storeSynchronize(store)
 
 export default store;
