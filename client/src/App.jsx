@@ -19,6 +19,7 @@ import HomeRegister from "./components/home-register/home-register.jsx";
 import Home from "./containers/home/home.jsx";
 import FileUpload from "./containers/fileupload/fileupload.jsx"
 import Sidebar from "./components/sidebar/sidebar";
+import ProtectedRoute from './components/protectedRoute/protectedRoute'
 
 
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
     <GlobalHistory />
     <Switch >
       <Route path="/" exact component={Index} /> 
-      <Route path="/home" exact component={Home} /> 
+      <ProtectedRoute path="/home" exact component={Home} /> 
       <Route path="/login" exact component={Login} />
       <Route path="/register" exact component={Register} />
       <Route path="/upload" exact component={FileUpload} />
