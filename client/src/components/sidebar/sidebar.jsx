@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from 'react-redux';
+import { NavLink } from "react-router-dom";
 import "./sidebar.scss"
 import SidebarCategory from "./sidebarcategory.jsx";
 import HomeIcon from "@material-ui/icons/Home"
@@ -14,12 +15,11 @@ function Sidebar() {
     <div className="sidebar">
       <h1>SIDEBAR</h1>
 
-      <SidebarCategory active Icon={HomeIcon} text="Home"/>
-      <SidebarCategory text="Explore"/>
-      <SidebarCategory text="Notifications"/>
-      <SidebarCategory text="Messages"/>
-      <SidebarCategory text="Booksmarks"/>
-      <SidebarCategory text="Profile"/>
+      <NavLink exact to="/home"><SidebarCategory active text="Inicio"/></NavLink>
+      <NavLink exact to="/explore"><SidebarCategory text="Explorar"/></NavLink>
+      <NavLink exact to="/notifications"><SidebarCategory text="Notificaciones"/></NavLink>
+      <NavLink exact to="/messages"><SidebarCategory text="Mensajes"/></NavLink>
+      <NavLink exact to="/profile"><SidebarCategory text="Perfil"/></NavLink>
       <Button variant="outlined" className="sidebar__tweet" fullWidth onClick={logout}>Logout</Button>
       
       <div className="btns">

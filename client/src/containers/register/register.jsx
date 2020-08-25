@@ -11,6 +11,7 @@ const Register = (props) => {
     const user = {
       name: event.target.name.value,
       surname: event.target.surname.value,
+      username: event.target.username.value,
       email: event.target.email.value,
       birthdate: event.target.birthdate.value,
       password: event.target.password.value,
@@ -30,7 +31,7 @@ const Register = (props) => {
     register(user)
             .then(() => {
                 setTimeout(() => {
-                    props.history.push('/')
+                    window.location.reload()
                 }, 1000);
             })
             .catch(error => {
@@ -52,11 +53,19 @@ const Register = (props) => {
 			</div>        	
     </div>
     <div className="form-group">
-      <input type="email" className="form-control" name="email" placeholder="Correo electrónico" required="required"/>
+			<div className="row">
+				<div className="col"><input type="text" className="form-control" name="username" placeholder="Nombre de usuario" required="required"/></div>
+				<div className="col"><input type="email" className="form-control" name="email" placeholder="Correo electrónico" required="required"/></div>
+			</div>        	
     </div>
     <div className="form-group">
 			<div className="row">
-				<div className="col"><input type="text" className="form-control" name="gender" placeholder="Género" required="required"/></div>
+				<div className="col">
+          <select className="form-control" name="gender" required>
+            <option value="value1" selected>Género</option> 
+            <option value="male">Hombre</option>
+            <option value="female">Mujer</option>
+          </select></div>
 				<div className="col"><input type="date" className="form-control" name="birthdate" placeholder="Fecha de nacimiento" required="required"/></div>
 			</div>        	
     </div>

@@ -25,7 +25,7 @@ const Login = (props) => {
 
     login(credentials)
             .then(() => {
-              notification.success({ message: 'Login success', description: 'Successfully logged in' })
+              notification.success({ message: 'Login success', description: 'Te has logeado con éxito.' })
                 setTimeout(() => {
                   getHistory().push('/home');
                 }, 1000);
@@ -45,6 +45,7 @@ const Login = (props) => {
         setIsRed(false)
     }, 2000);
 }, [])
+
 const validatePassword = event => {
     if (event.target.value.length < 8) {
         setPasswordError('Password must be at least 8 characters');
