@@ -31,6 +31,19 @@ const PostController = {
       });
     }
   },
+
+  /*async getUserbyPost(req,res) {
+    try {
+      const { id } = req.params;
+      const user = await Post.findOne({ id: id }).populate('user');
+      res.send(user);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({
+        message: "Ha habido un problema al obtener todos los usuarios.",
+      });
+    }
+  },*/
 };
 
 module.exports = PostController;

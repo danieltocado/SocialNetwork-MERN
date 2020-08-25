@@ -1,4 +1,5 @@
 import axios from 'axios';
+import getHistory from '../../history'; 
 
 import store from '../store';
 
@@ -36,9 +37,10 @@ export const login = async (credentials) => {
     }
 }
 
-export const update = async (user) => {
+export const update = async (id) => {
     try {
-        const res = await axios.post('users/update', user);
+        
+        const res = await axios.put('users/update/' + id);
 
         store.dispatch({
             type: UPDATE
@@ -77,6 +79,8 @@ export const logout = async () => {
 
         localStorage.removeItem('authToken');
 
+        getHistory().push('/');
+        
         return res;
 
     } catch (error) {

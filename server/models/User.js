@@ -3,6 +3,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new mongoose.Schema({
+    
+    username: {
+        type: String,
+        trim: true,
+        required: 'Username is required',
+        unique: 'Username must be unique',
+    },
     name: {
         type: String,
         trim: true,
@@ -35,7 +42,7 @@ const UserSchema = new mongoose.Schema({
     tokens: {
         type: [String],
     },
-    posts: { type: [Schema.ObjectId], ref:'Post' }
+    posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}]
 });
 
 

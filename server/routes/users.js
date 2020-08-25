@@ -8,9 +8,10 @@ const router = express.Router();
 
 router.get("/all", UserController.getAll);
 router.get("/info", UserController.getInfo)
+router.post('/post/:id', UserController.getPostsbyUser);
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
-router.put("/update", UserController.update);
+router.put("/update/:id", UserController.update);
 router.post("/logout", auth, UserController.logout);
 router.post("/profile", UserController.profile);
 router.delete("/:email", UserController.delete);

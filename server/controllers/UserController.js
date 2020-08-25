@@ -26,10 +26,36 @@ const UserController = {
     }
   },
 
+  async getAll(req, res) {
+    try {
+      const users = await User.find().populate({path: 'posts'})
+      res.send(users);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({
+        message: "Ha habido un problema al obtener todos los usuarios.",
+      });
+    }
+  },
+
+  async getPostsbyUser(req,res) {
+    try {
+      const { id } = req.params;
+      const user = await User.findById(id).populate('posts');
+      res.send(user.posts);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({
+        message: "Ha habido un problema al obtener todos los usuarios.",
+      });
+    }
+  },
+
   async login(req, res) {
     try {
       const user = await User.findOne({
         email: req.body.email,
+        
       });
 
       if (!user) {
@@ -76,7 +102,10 @@ const UserController = {
     try {
       const userId = req.params.id;
       const dataUpdate = req.body; 
-      const user = await User.findByIdAndUpdate(userId, dataUpdate); 
+
+      delete dataUpdate.password;
+
+      const user = await User.findByIdAndUpdate(userId, dataUpdate, { new: true }); 
       res.send({message: "Has actualizado con éxito.", user});
     } catch (error) {
       console.error(error);
@@ -86,6 +115,8 @@ const UserController = {
     });
    } 
   },
+
+  
 
   async logout(req, res) {
     try {
@@ -159,17 +190,7 @@ const UserController = {
     res.send(req.user);
   },
 
-  async getAll(req, res) {
-    try {
-      const users = await User.find().populate({path: 'posts'})
-      res.send(users);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send({
-        message: "Ha habido un problema al obtener todos los usuarios.",
-      });
-    }
-  },
+  
 };
 
 module.exports = UserController;
