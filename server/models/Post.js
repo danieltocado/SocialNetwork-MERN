@@ -10,7 +10,7 @@ const PostSchema = new mongoose.Schema({
     image: String,
     avatar: String, 
     date: { type: Date, default: Date.now },
-    user: { type: Schema.Types.ObjectId, ref: 'User' }
+    user: { type: Schema.ObjectId, ref: 'User' }
 });
 
 const Post = mongoose.model("Post", PostSchema);

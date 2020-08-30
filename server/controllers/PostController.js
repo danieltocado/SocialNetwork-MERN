@@ -1,6 +1,7 @@
 //Models
 
 const Post = require("../models/Post");
+const Follow = require("../models/Follow");
 
 const PostController = {
 
@@ -32,18 +33,32 @@ const PostController = {
     }
   },
 
-  /*async getUserbyPost(req,res) {
+  async getPostByUser(req,res) {
     try {
-      const { id } = req.params;
-      const user = await Post.findOne({ id: id }).populate('user');
-      res.send(user);
+      const userId = req.params.id;
+      const post = await Post.find({ 'user': userId }).populate('user').sort({date: -1});
+      res.send(post);
     } catch (error) {
       console.error(error);
       res.status(500).send({
-        message: "Ha habido un problema al obtener todos los usuarios.",
+        message: "Ha habido un problema al obtener los post del usuario.",
       });
     }
-  },*/
+  },
+
+  async getPostsfromFollowed(req,res) {
+    try {
+      const userId = req.params.id;
+      const post = await Post.find({ 'user': userId }).populate('user')
+      post.followers = await Follow.find({'user': userId}).populate({path: 'followed'})
+      res.send(post.followers);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({
+        message: "Ha habido un problema al obtener los post de los usuarios que sigues.",
+      });
+    }
+  },
 };
 
 module.exports = PostController;
