@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Avatar } from "@material-ui/core"
+import getHistory from '../../history'; 
 import "./post.scss"
 
 function Post({name,
+    surname,
     username,
     text,
     image,
@@ -17,7 +20,7 @@ function Post({name,
             <div className="post_body">
                 <div className="post_header">
                     <div className="post_headerText">
-                        <h3>{name}</h3> 
+                        <Link to={"/" + username}><h3>{name} {surname}</h3></Link> 
                         <span className="post_user">@{username}</span>
                         
                     </div>
@@ -25,9 +28,9 @@ function Post({name,
                         <p>{text}</p>
                     </div>
                 </div>
-                <img src={image} alt=""/>
+                <img src={image} alt="" className="post_image"/>
                 <div className="post_footer">
-                    Like
+                    
                 </div>
                 <div className="post_date">
                     {date}
