@@ -3,7 +3,8 @@ import getHistory from '../../history';
 
 import store from '../store';
 
-import { SIGN_UP, LOGIN, UPDATE, SET_USER, LOGOUT } from '../types/users';
+import { SIGN_UP, FOLLOW, UNFOLLOW, LOGIN, UPDATE, SET_USER, LOGOUT } from '../types/users';
+
 
 export const register = async (user) => {
     try {
@@ -11,6 +12,36 @@ export const register = async (user) => {
 
         store.dispatch({
             type: SIGN_UP
+        });
+
+        return res;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const follow = async (user) => {
+    try {
+        const res = await axios.post('users/follow', user);
+
+        store.dispatch({
+            type: FOLLOW
+        });
+
+        return res;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const unfollow = async (user) => {
+    try {
+        const res = await axios.delete(`users/follow` + user._id);
+
+        store.dispatch({
+            type: UNFOLLOW
         });
 
         return res;
@@ -37,21 +68,32 @@ export const login = async (credentials) => {
     }
 }
 
-export const update = async (id) => {
+
+
+export const update = async (id, body) => {
     try {
-        
-        const res = await axios.put('users/update/' + id);
 
+        const token = localStorage.getItem('authToken')
+        const res = await axios.put('users/update/' + id, body, {
+        headers: {
+            'authorization': token
+        }
+    });
         store.dispatch({
-            type: UPDATE
+            type: UPDATE,
+            payload: res.data
         });
-
+        
+        
         return res;
-
+        
     } catch (error) {
         console.error(error)
     }
 }
+
+
+                        
 
 export const getInfo = async () => {
     try {
