@@ -3,6 +3,10 @@
     align-items: center;
     cursor: pointer;
     padding: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 20px;
+    color: black
 }
 
 .category h2 {
@@ -16,11 +20,14 @@
     border-radius: 30px;
     color: var(--twitter-color);
     transition: color 100ms ease-out;
+    outline : 0;
 }
 
-.category--active {
-    color: var(--twitter-color);
+.category_icon {
+    
 }
+
+
 
 .sidebar {
     border-right: 1px solid var(--twitter-background);
@@ -41,6 +48,7 @@
 .sidebar__tweet {
     background-color: var(--twitter-color) !important;
     border: none !important;
+    font-size: 14px !important;
     color: white !important;
     font-weight: 900 !important;
     text-transform: inherit !important;
@@ -54,3 +62,7 @@
     flex-wrap: wrap;
     width: 100%;
 }
+
+.activeLink {
+    color: var(--twitter-color) !important; 
+ }
