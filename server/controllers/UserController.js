@@ -100,13 +100,11 @@ const UserController = {
 
   async update(req,res) {
     try {
-      const userId = req.params.id;
-      const dataUpdate = req.body; 
-
-      delete dataUpdate.password;
-
-      const user = await User.findByIdAndUpdate(userId, dataUpdate, { new: true }); 
-      res.send({message: "Has actualizado con éxito.", user});
+      const { id } = req.params;
+      const body = req.body; 
+   
+      const user = await User.findByIdAndUpdate(id, body, { new: true }); 
+      res.send(user);
     } catch (error) {
       console.error(error);
       res.status(500).send({
@@ -115,8 +113,6 @@ const UserController = {
     });
    } 
   },
-
-  
 
   async logout(req, res) {
     try {
@@ -138,27 +134,10 @@ const UserController = {
 
   async profile(req, res) {
     try {
-      await Token.findOne({
-        _id: req.body.token,
-      }).then((token) => {
-        if (token) {
-          const userChoose = req.body;
-
-          User.findOne({
-            username: userChoose.name,
-          })
-            .then((users) => {
-              if (users) {
-                res.send(users);
-              }
-            })
-            .catch((error) => console.log(error));
-        } else {
-          res.send({
-            message: "El usuario debe estar logeado.",
-          });
-        }
-      });
+        const user = await User.findOne({username:req.params.username})
+        res.send({
+          user
+        })
     } catch (error) {
       console.error(error);
       res.status(500).send({

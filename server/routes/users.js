@@ -13,7 +13,7 @@ router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.put("/update/:id", UserController.update);
 router.post("/logout", auth, UserController.logout);
-router.post("/profile", UserController.profile);
+router.get("/:username", UserController.profile);
 router.delete("/:email", UserController.delete);
 
 module.exports = router;

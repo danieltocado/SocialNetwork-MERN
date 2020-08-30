@@ -42,7 +42,15 @@ const UserSchema = new mongoose.Schema({
     tokens: {
         type: [String],
     },
-    posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}]
+    bio: {
+        type: String,
+        trim: true,
+    },
+    avatar: {
+        type: String,
+        trim: true,
+    
+    },
 });
 
 
