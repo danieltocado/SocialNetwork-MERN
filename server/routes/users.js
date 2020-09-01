@@ -7,6 +7,7 @@ const UserController = require("../controllers/UserController");
 const router = express.Router();
 
 router.get("/all", UserController.getAll);
+router.get("/five", UserController.getFive);
 router.get("/info", UserController.getInfo)
 router.post('/post/:id', UserController.getPostsbyUser);
 router.post("/register", UserController.register);
