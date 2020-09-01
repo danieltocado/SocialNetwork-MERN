@@ -31,12 +31,14 @@ app.use(cors);
   
 //Routers
 const userRouter = require("./routes/users");
-const followRouter = require("./routes/follows") ;
+const followRouter = require("./routes/follows");
+const likeRouter = require("./routes/likes"); 
 const postRouter = require("./routes/posts"); 
 
 //Endpoints Router
 app.use("/users", userRouter);
 app.use("/users", followRouter);
+app.use("/like", likeRouter);
 app.use("/post", postRouter);
 
 
