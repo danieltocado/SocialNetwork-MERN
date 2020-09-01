@@ -1,20 +1,15 @@
-import React, { useEffect, Component } from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { GlobalHistory } from './history';
-import { getInfo } from "./redux/actions/users";
+
 import 'antd/dist/antd.css'; 
 import './App.css';
 
-
-//Components
-
-import Footer from './components/footer/footer.jsx'
 
 //Containers
 import Register from './containers/register/register.jsx'
 import Login from './containers/login/login.jsx'
 import Index from './containers/index/index.jsx'
-import HomeRegister from "./components/home-register/home-register.jsx";
 import Home from "./containers/home/home.jsx";
 import FileUpload from "./containers/fileupload/fileupload.jsx"
 import Sidebar from "./components/sidebar/sidebar";
@@ -22,6 +17,7 @@ import ProtectedRoute from './components/protectedRoute/protectedRoute'
 import ProtectedRoute2 from './components/protectedRoute/protectedRoute2'
 import ProfileView from "./containers/profile/profileview";
 import UserFeed from "./containers/feed-user/feed-userview";
+import Explore from "./containers/explore/explore"
 import { connect } from 'react-redux'
 
 
@@ -44,7 +40,8 @@ class App extends Component {
       <Switch >
         <ProtectedRoute2 path="/" exact component={Index} /> 
         <ProtectedRoute path="/home" exact component={Home} />
-        <ProtectedRoute path="/profile" exact component={ProfileView} />  
+        <ProtectedRoute path="/profile" exact component={ProfileView} />
+        <ProtectedRoute path="/explore" exact component={Explore} />    
         <Route path="/:username" exact component={UserFeed} />
         
         <Route path="/login" exact component={Login} />
