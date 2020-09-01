@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const Schema = mongoose.Schema;
 
 const UserSchema = new mongoose.Schema({
@@ -49,12 +50,21 @@ const UserSchema = new mongoose.Schema({
     avatar: {
         type: String,
         trim: true,
-    
     },
+    ubication: {
+        type: String,
+        trim: true,
+    },
+    website: {
+        type: String,
+        trim: true,
+    }
 });
 
 
 
 const User = mongoose.model('User', UserSchema)
+
+
 
 module.exports = User;
