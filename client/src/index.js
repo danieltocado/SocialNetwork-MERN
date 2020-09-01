@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import history from "./history";
+import 'antd/dist/antd.css'; 
 
 
 ReactDOM.render(
