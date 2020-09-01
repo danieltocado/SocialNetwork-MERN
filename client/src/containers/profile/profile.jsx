@@ -3,6 +3,8 @@ import Axios from "axios";
 import { connect } from 'react-redux'
 import { useSelector } from "react-redux";
 import { update } from "../../redux/actions/users";
+import LinkIcon from '@material-ui/icons/Link';
+import PublicIcon from '@material-ui/icons/Public';
 import "./profile.scss";
 
 const Profile = () => {
@@ -22,7 +24,8 @@ const Profile = () => {
       avatar: event.target.avatar.value,
       bio: event.target.bio.value,
       gender: event.target.gender.value,
-      
+      ubication: event.target.ubication.value,
+      website: event.target.website.value,
     };
   
     update(user._id, userupdate)
@@ -38,22 +41,29 @@ const Profile = () => {
         <h2>Actualización de perfil</h2>
       </div>
       <div className="post_container">
-      <div className="user_container">
+        <div className="user_container">
           <div className="user_info">
             <div className="user_left">
               <img src={user.avatar} className="profile_avatar" alt="" srcset=""/>
             </div>
 
             <div className="user_right">
-              <h1>{user.name} {user.surname}</h1> 
-              <span className="username">@{user.username}</span>
+              <div className="user_info_name">
+                <h1>{user.name} {user.surname}</h1> 
+                <span className="username">@{user.username}</span>
+                
+              </div>
+              <h4>{user.email}</h4>
 
-              <h3>{user.email}</h3>
-              <h4>{user.bio}</h4>
+              <span className="user_about">{user.bio}</span>
 
-              <h3>Following: 
-              Followers:
-            </h3>
+              <div className="user_icons">
+                <span className="user_icon"><LinkIcon/> <a href={user.website}>{user.website}</a> </span>
+                <span className="user_icon"> <PublicIcon/> {user.ubication}</span>
+              </div>
+            
+            <br/>
+            
 
             </div>
           </div>
@@ -65,7 +75,11 @@ const Profile = () => {
           {/*<Link to={"/" + userProfile?.user.username + "/followers"}><h3>Followers</h3></Link> */}
           </div>
         </div>
-        </div>
+     </div> 
+          
+
+         
+        
       {user?._id ? (
         
         <form onSubmit={onSubmit} className="signup-form">
@@ -82,6 +96,7 @@ const Profile = () => {
                   className="form-control"
                   name="name"
                   placeholder={user.name}
+                  value={user.name}
                 />
               </div>
               <div className="col">
@@ -90,6 +105,7 @@ const Profile = () => {
                   className="form-control"
                   name="surname"
                   placeholder={user.surname}
+                  value={user.surname}
                 />
               </div>
             </div>
@@ -102,6 +118,7 @@ const Profile = () => {
                   className="form-control"
                   name="username"
                   placeholder={user.username}
+                  value={user.username}
                 />
               </div>
               <div className="col">
@@ -110,6 +127,7 @@ const Profile = () => {
                   className="form-control"
                   name="email"
                   placeholder={user.email}
+                  value={user.email}
                 />
               </div>
             </div>
@@ -117,8 +135,8 @@ const Profile = () => {
           <div className="form-group">
             <div className="row">
               <div className="col">
-                <select className="form-control" name="gender"  defaultValue="value1" required>
-                  <option value="value1">
+                <select className="form-control" name="gender"  defaultValue={user.gender} required>
+                  <option value="value1" selected="true" disabled="disabled">
                     Género
                   </option>
                   <option value="male">Hombre</option>
@@ -131,6 +149,29 @@ const Profile = () => {
                   className="form-control"
                   name="birthdate"
                   placeholder="Fecha de nacimiento"
+                  value={user.birthdate}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="row">
+              <div className="col">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="ubication"
+                  placeholder="Ubicación actual"
+                  value={user.ubication}
+                />
+              </div>
+              <div className="col">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="website"
+                  placeholder="Enlace a tu sitio web"
+                  value={user.website}
                 />
               </div>
             </div>
@@ -143,6 +184,7 @@ const Profile = () => {
                   className="form-control"
                   name="bio"
                   placeholder="Escribe unas pocas líneas sobre tí."
+                  value={user.bio}
                 />
               </div>
            </div>
@@ -154,6 +196,7 @@ const Profile = () => {
                   className="form-control"
                   name="avatar"
                   placeholder="Enlace de tu avatar."
+                  value={user.avatar}
                 />
               </div>
               
