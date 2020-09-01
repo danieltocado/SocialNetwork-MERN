@@ -38,10 +38,24 @@ const UserController = {
     }
   },
 
+  async getFive(req, res) {
+    try {
+      const number = Math.floor(Math.random() * 20);
+      const users = await User.find().limit(5).skip(5).populate({path: 'posts'})
+      res.send(users);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({
+        message: "Ha habido un problema al obtener cinco usuarios.",
+      });
+    }
+  },
+
+  
   async getPostsbyUser(req,res) {
     try {
       const { id } = req.params;
-      const user = await User.findById(id).populate('posts');
+      const user = await User.findById(id).populate('posts').random();
       res.send(user.posts);
     } catch (error) {
       console.error(error);
@@ -171,5 +185,13 @@ const UserController = {
 
   
 };
+
+limitrecords=5;
+
+function getRandomArbitrary(min, max) {
+    return Math.ceil(Math.random() * (max - min) + min);
+  }
+
+   
 
 module.exports = UserController;
