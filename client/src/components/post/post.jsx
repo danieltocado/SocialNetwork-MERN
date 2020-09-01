@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Avatar } from "@material-ui/core"
 import getHistory from '../../history'; 
 import "./post.scss"
-import Likes from '../likes/likes';
+
 
 function Post({
     id,
@@ -37,7 +37,7 @@ function Post({
                 <img src={image} alt="" className="post_image"/>
                 <div className="post_footer">
                     
-                   {/* <Likes/> */}
+                  
 
                 </div>
                 <div className="post_date">
