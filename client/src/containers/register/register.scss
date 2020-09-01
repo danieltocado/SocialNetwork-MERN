@@ -85,4 +85,9 @@ body {
 }	
 .signup-form form a:hover {
 	text-decoration: underline;
-}  
+} 
+
+.btn-color {
+	background-color: var(--twitter-color) !important;
+	color: white !important;
+}

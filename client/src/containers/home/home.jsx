@@ -2,7 +2,7 @@ import React from "react";
 import "./home.scss";
 import Sidebar from "../../components/sidebar/sidebar";
 import Widgets from "../../components/widgets/widgets";
-import Feed from "../feed/feed.jsx";
+import FeedFollowing from "../feed-following/feed-following"
 
 
 class Home extends React.Component {
@@ -16,7 +16,7 @@ class Home extends React.Component {
     
         <Sidebar/>
 
-        <Feed/>
+        <FeedFollowing/>
 
         <Widgets/>
 

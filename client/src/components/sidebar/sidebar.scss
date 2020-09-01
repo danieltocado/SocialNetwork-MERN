@@ -1,3 +1,7 @@
+* {
+    text-decoration: none; 
+}
+
 .category {
     display: flex;
     align-items: center;
@@ -23,8 +27,9 @@
     outline : 0;
 }
 
-.category_icon {
-    
+.category_name {
+    margin-left: 10px;
+    font-weight: 600 !important;
 }
 
 
@@ -55,6 +60,13 @@
     border-radius: 30px !important;
     height: 50px !important;
     margin-top: 20px !important;
+}
+
+.sidebar_categories {
+    display: flex;
+    height: 90%;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .sidebar_link {

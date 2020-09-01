@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useSelector, Component } from "react";
+import React, { Component } from "react";
 import Axios from "axios";
 import { connect } from 'react-redux'
 import { create } from "../../redux/actions/posts";
 import moment from "moment";
 import { Avatar, Button } from "@material-ui/core"
-import { BackTop } from 'antd';
+
 import Posts from "../../components/posts/posts.jsx";
 import Post from "../../components/post/post.jsx";
 import "./feed.scss";
@@ -25,10 +25,6 @@ class Feed extends React.Component {
     });
   }
 
-  handleUpdate = () => {
-    //by calling this method react re-renders the component
-    
-  };
 
   onSubmit = (event) => {
     event.preventDefault();
@@ -56,7 +52,7 @@ class Feed extends React.Component {
       <div className="feed">
         {/* Header */}
         <div className="feed_header">
-          <h2>Inicio</h2>
+          <h2>Explorar</h2>
         </div>
 
         <div>
@@ -66,18 +62,16 @@ class Feed extends React.Component {
             <form onSubmit={this.onSubmit}>
                 <div className="post_form">
                     <Avatar src={this.props.user.avatar}/>
-                    <input placeholder="Qué está pasando?" type="text" name="text"/>
+                    <input placeholder="Saluda al resto!" type="text" name="text"/>
                 
                 </div>
 
-                <input className="post_image" placeholder="Imagen url" type="text" name="image"/>
-                <Button className="post_button" type="submit" onClick={this.handleUpdate}>Tweet</Button>
+                <input className="post_image" placeholder="Envia una imagen copiando su enlace." type="text" name="image"/>
+                <Button className="post_button" type="submit">Enviar</Button>
             </form>
         </div>
 
         {/* Post */}
-        <button id="feed" onClick={this.handleUpdate}>Update</button>
-
         {posts.map((post) => (
           <Post
             key={post._id}
@@ -91,9 +85,6 @@ class Feed extends React.Component {
           />
         ))}
 
-
-        
-      <a href="#feed">UP</a>
 
       </div>
     );

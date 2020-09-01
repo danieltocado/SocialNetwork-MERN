@@ -8,19 +8,21 @@
 
 .index_container {
     display: flex;
+    background: rgb(221,72,35);
+background: linear-gradient(90deg, rgba(221,72,35,1) 0%, rgba(255,255,255,1) 100%);
 
 }
 
 .left_container {
     width: 50%;
     height: 100vh;
-    background-color: var(--twitter-color);
+    //background-color: var(--twitter-color);
 }
 
 .right_container {
     width: 50%;
     height: 100vh;
-    background-color: #101823;
+    //background-color: white;
 }
 
 .login_container {

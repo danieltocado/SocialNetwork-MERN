@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import Axios from "axios";
 import { connect } from 'react-redux'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import moment from "moment";
 import Post from "../../components/post/post.jsx";
-import { Avatar, Button } from "@material-ui/core"
-import { follow, unfollow } from "../../redux/actions/users";
+import LinkIcon from '@material-ui/icons/Link';
+import PublicIcon from '@material-ui/icons/Public';
+import { follow } from "../../redux/actions/users";
 import "./feed-user.scss";
 
 
@@ -20,7 +21,8 @@ const UserFeed = () => {
   const [userFollowing, setUserFollowing] = useState(null)
   const [userFollowed, setUserFollowed] = useState(null)
   const [userFollow, setUserFollow] = useState()
-  const [userUnfollow, setUserUnfollow] = useState()
+  const [userUnfollow, setUserUnfollow] = useState(null)
+  const [userAction, setUserAction] = useState(null);
 
   const { username } = useParams()
   console.log("hola " + username)
@@ -37,6 +39,7 @@ const UserFeed = () => {
     });
   },[])
 
+  
     const followUser = () => {
       const followw = {
         user: user._id,
@@ -45,6 +48,7 @@ const UserFeed = () => {
   
       follow(followw)
       setUserFollow(followw)
+      setUserAction('followed')
       //window.location.reload()
 
       console.log(followw);
@@ -56,6 +60,7 @@ const UserFeed = () => {
       .then((res) => {
       const unfollow = res.data;
       setUserUnfollow(unfollow)
+      setUserAction('unfollowed')
       console.log(unfollow)
       
       })
@@ -105,7 +110,7 @@ const UserFeed = () => {
     <div className="feed">
       {/* Header */}
       <div className="feed_header">
-  <h2>Feed del usuario!! {userProfile?.user.name} {userProfile?.user.surname}</h2>
+  <h2>Perfil de  {userProfile?.user.name} {userProfile?.user.surname}</h2>
       </div>
 
       <div>
@@ -120,22 +125,39 @@ const UserFeed = () => {
             </div>
 
             <div className="user_right">
-              <h1>{userProfile?.user.name} {userProfile?.user.surname}</h1> 
-              <span className="username">@{userProfile?.user.username}</span>
+              <div className="user_info_name">
+                <h1>{userProfile?.user.name} {userProfile?.user.surname}</h1> 
+                <span className="username">@{userProfile?.user.username}</span>
+                <div className="user_buttons_follow">
 
-              <h3>{userProfile?.user.email}</h3>
-              <h4>{userProfile?.user.bio}</h4>
+                {/*userAction === null ?  :  */}
 
-              <h3>Following: {userFollowing?.length}
-              Followers: {userFollowed?.length}
-            </h3>
+                  <span className="user_button_follow" onClick={() => followUser()}>Follow</span>
 
-            <button onClick={() => followUser()}>Follow</button>
-            <button onClick={() => unfollowUser()}>Unfollow</button>
+                
+
+                  <span className="user_button_follow"onClick={() => unfollowUser()}>Unfollow</span>
+
+               
+
+                </div>
+              </div>
+              <h4>{userProfile?.user.email}</h4>
+
+              <span className="user_about">{userProfile?.user.bio}</span>
+
+              <div className="user_icons">
+                <span className="user_icon"><LinkIcon/> <a href={userProfile?.user.website}>{userProfile?.user.website}</a> </span>
+                <span className="user_icon"> <PublicIcon/> {userProfile?.user.ubication}</span>
+              </div>
+            
             <br/>
-            <button onClick={() => getUserPosts()}>Inicio</button>
-            <button onClick={() => getUserFollowing()}>Clicka aqui para ver los usuarios seguidos por @{userProfile?.user?.username}</button>
-            <button onClick={() => getUserFollowed()}>Clicka aqui para ver los seguidores de @{userProfile?.user?.username}</button>
+            <div className="user_list_buttons"> 
+              <span className="user_button" onClick={() => getUserPosts()}>Publicaciones</span>
+              <span className="user_button" onClick={() => getUserFollowing()}>Siguiendo {userFollowing?.length}</span>
+              <span className="user_button" onClick={() => getUserFollowed()}>Seguidores {userFollowed?.length}</span>
+            </div>
+
             </div>
           </div>
           
@@ -162,23 +184,23 @@ const UserFeed = () => {
 
     {userFollowing?.map((following) => (
         <Post
-            key={following.followed._id}
-            name={following?.followed.name}
-            surname={following?.followed.surname}
-            username={following?.followed.username}
-            text={following?.followed.username}
-            avatar={following?.followed.avatar}
+            key={following?.followed?._id}
+            name={following?.followed?.name}
+            surname={following?.followed?.surname}
+            username={following?.followed?.username}
+            text={following?.followed?.bio}
+            avatar={following?.followed?.avatar}
           />
         ))}
     
     {userFollowed?.map((followed) => (
         <Post
-            key={followed?.user._id}
-            name={followed?.user.name}
-            surname={followed?.user.surname}
-            username={followed?.user.username}
-            text={followed?.user.username}
-            avatar="https://i.ytimg.com/vi/2ulh3M9sQM8/maxresdefault.jpg"
+            key={followed?.user?._id}
+            name={followed?.user?.name}
+            surname={followed?.user?.surname}
+            username={followed?.user?.username}
+            text={followed?.user?.bio}
+            avatar={followed?.user?.avatar}
           />
         ))}
     </div>

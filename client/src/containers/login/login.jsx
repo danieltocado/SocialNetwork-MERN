@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { FormGroup, Label, Input } from "reactstrap";
 import { notification } from 'antd';
 import { MDBBtn } from "mdbreact";
 import { login } from "../../redux/actions/users";
@@ -29,30 +29,16 @@ const Login = (props) => {
                 setTimeout(() => {
                   getHistory().push('/home');
                 }, 1000);
-            })
-            .catch(error => {
-              const errorMsg = error.response?.data?.message;
-              notification.error({ message: 'Login failed', description: errorMsg });
+            }).catch(error => {
+              console.log(error)
+              
+              alert({ message: 'Login failed', description: 'Login failed' });
             });
     console.log(credentials);
 
   };
 
-  useEffect(() => {
-    console.log(emailInputRef.current)
-    setTimeout(() => {
-        emailInputRef.current.backgroundColor = 'red';
-        setIsRed(false)
-    }, 2000);
-}, [])
-
-const validatePassword = event => {
-    if (event.target.value.length < 8) {
-        setPasswordError('Password must be at least 8 characters');
-    }else{
-        setPasswordError('')
-    }
-}
+ 
 
   return (
     <div className="login_container">
@@ -79,7 +65,6 @@ const validatePassword = event => {
             </Label>
             <Input
               type="password"
-              onKeyUp={validatePassword}
               name="password"
               id="examplePassword"
               placeholder="don't tell!"
@@ -88,10 +73,10 @@ const validatePassword = event => {
           
           
         
-          <MDBBtn flat type="submit" className="login-button text-white">
+          <MDBBtn flat type="submit" className="login-button text-orange">
             LOGIN
          </MDBBtn>
-        
+         
       </form>
       <div className="password_error">
         {passwordError}

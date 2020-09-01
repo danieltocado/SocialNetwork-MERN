@@ -40,11 +40,77 @@
     
 }
 
+.user_info_name {
+    display: flex;
+}
+
 .user_right {
     padding-left: 10px;
 }
 
+.user_buttons_follow {
+    margin-left: 5vw;
+    display: flex;
+}
+
+.user_button_follow {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    margin-left: 10px;
+    color: black
+}
+
+.user_button_follow:hover {
+    border-radius: 30px;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+    outline : 0;
+}
+
+.user_list_buttons {
+    display: flex;
+}
+
+.user_button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 20px;
+    color: black
+}
+
+.user_icons {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.user_icon {
+    margin-top: 10px;
+}
+
+.user_button:hover {
+    border-radius: 30px;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+    outline : 0;
+}
+
+.user_about {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
 .username {
+    margin-left: 10px;
+    margin-top: 5px;
     font-size: 12px;
     color: gray;
 }

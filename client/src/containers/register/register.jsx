@@ -6,6 +6,7 @@ import "./register.scss";
 
 const Register = (props) => {
   const [passwordError, setPasswordError] = useState("");
+  
   const onSubmit = (event) => {
     event.preventDefault();
     const user = {
@@ -39,13 +40,19 @@ const Register = (props) => {
             });
     console.log(user);
 
-    
-  };
+  }
+  const validatePassword = event => {
+    if (event.target.value.length < 8) {
+        setPasswordError('La contraseña tiene que tener por los menos 8 carácteres.  ');
+    }else{
+        setPasswordError('')
+    }
+};
   return (
     <form onSubmit={onSubmit} className="signup-form">
      
     <h2>Registro</h2>
-		<p className="hint-text">Crea tu cuenta. Es gratis y tardas menos de un minuto.</p>
+		<p className="hint-text">Crea tu cuenta. Es gratis y tardas pocos segundos.</p>
     <div className="form-group">
 			<div className="row">
 				<div className="col"><input type="text" className="form-control" name="name" placeholder="Nombre" required="required"/></div>
@@ -70,15 +77,15 @@ const Register = (props) => {
 			</div>        	
     </div>
     <div className="row">
-			<div className="col"><input type="password" id="password" name="password" className="form-control" name="first_name" placeholder="Introduce tu contraseña" required="required"/></div>
+			<div className="col"><input type="password" id="password" name="password" className="form-control" name="first_name" placeholder="Introduce tu contraseña" required="required" onKeyUp={validatePassword}/></div>
 			<div className="col"><input type="password" id="password2" name="password2" className="form-control" name="last_name" placeholder="Repite tu contraseña" required="required"/></div>
       
 		</div> 
-    <div className="form-group hint-text">
-			<label className="form-check-label"><input type="checkbox" required="required" className="hint-text"/> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+    <div className="form-group hint-text mt-5">
+			<label className="form-check-label"><input type="checkbox" required="required" className="hint-text"/> Acepto los términos de uso y la política de privacidad.</label>
 		</div>
 		<div className="form-group">
-      <button type="submit" className="btn btn-success btn-lg btn-block">Register Now</button>
+      <button type="submit" className="btn btn-color btn-lg btn-block">Regístrate ahora</button>
     </div>
     <div className="row">
       <span>{passwordError}</span>
