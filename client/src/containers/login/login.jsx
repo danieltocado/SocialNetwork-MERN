@@ -56,7 +56,7 @@ const Login = (props) => {
               }}
               name="email"
               id="exampleEmail"
-              placeholder="something@idk.cool"
+              placeholder="Correo electrónico"
             />
           </FormGroup>
           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
@@ -67,14 +67,14 @@ const Login = (props) => {
               type="password"
               name="password"
               id="examplePassword"
-              placeholder="don't tell!"
+              placeholder="No se la digas a nadie!"
             />
           </FormGroup>
           
           
         
           <MDBBtn flat type="submit" className="login-button text-orange">
-            LOGIN
+            ENTRAR
          </MDBBtn>
          
       </form>

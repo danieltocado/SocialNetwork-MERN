@@ -96,7 +96,7 @@ const Profile = () => {
                   className="form-control"
                   name="name"
                   placeholder={user.name}
-                  value={user.name}
+                  defaultValue={user.name}
                 />
               </div>
               <div className="col">
@@ -105,7 +105,7 @@ const Profile = () => {
                   className="form-control"
                   name="surname"
                   placeholder={user.surname}
-                  value={user.surname}
+                  defaultValue={user.surname}
                 />
               </div>
             </div>
@@ -118,7 +118,7 @@ const Profile = () => {
                   className="form-control"
                   name="username"
                   placeholder={user.username}
-                  value={user.username}
+                  defaultValue={user.username}
                 />
               </div>
               <div className="col">
@@ -127,7 +127,7 @@ const Profile = () => {
                   className="form-control"
                   name="email"
                   placeholder={user.email}
-                  value={user.email}
+                  defaultValue={user.email}
                 />
               </div>
             </div>
@@ -149,7 +149,7 @@ const Profile = () => {
                   className="form-control"
                   name="birthdate"
                   placeholder="Fecha de nacimiento"
-                  value={user.birthdate}
+                  defaultValue={user.birthdate}
                 />
               </div>
             </div>
@@ -162,7 +162,7 @@ const Profile = () => {
                   className="form-control"
                   name="ubication"
                   placeholder="Ubicación actual"
-                  value={user.ubication}
+                  defaultValue={user.ubication}
                 />
               </div>
               <div className="col">
@@ -171,7 +171,7 @@ const Profile = () => {
                   className="form-control"
                   name="website"
                   placeholder="Enlace a tu sitio web"
-                  value={user.website}
+                  defaultValue={user.website}
                 />
               </div>
             </div>
@@ -184,7 +184,7 @@ const Profile = () => {
                   className="form-control"
                   name="bio"
                   placeholder="Escribe unas pocas líneas sobre tí."
-                  value={user.bio}
+                  defaultValue={user.bio}
                 />
               </div>
            </div>
@@ -195,8 +195,8 @@ const Profile = () => {
                   cols="40" rows="5"
                   className="form-control"
                   name="avatar"
-                  placeholder="Enlace de tu avatar."
-                  value={user.avatar}
+                  placeholder={user.avatar}
+                  defaultValue={user.avatar}
                 />
               </div>
               
@@ -204,7 +204,7 @@ const Profile = () => {
           
 
           <div className="form-group">
-            <button type="submit" className="btn btn-success btn-lg btn-block">
+            <button type="submit" className="btn btn-color btn-lg btn-block">
               Actualiza
             </button>
           </div>

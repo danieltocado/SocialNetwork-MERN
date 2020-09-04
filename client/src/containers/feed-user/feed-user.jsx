@@ -37,6 +37,8 @@ const UserFeed = () => {
       setProfile(user)
       
     });
+
+    
   },[])
 
   

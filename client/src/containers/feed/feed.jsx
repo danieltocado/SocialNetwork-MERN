@@ -67,7 +67,7 @@ class Feed extends React.Component {
                 </div>
 
                 <input className="post_image" placeholder="Envia una imagen copiando su enlace." type="text" name="image"/>
-                <Button className="post_button" type="submit">Enviar</Button>
+                <Button className="post_button" type="submit" onClick={() => this.componentDidMount()}>Enviar</Button>
             </form>
         </div>
 

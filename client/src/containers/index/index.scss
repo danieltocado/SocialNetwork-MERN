@@ -54,9 +54,15 @@ background: linear-gradient(90deg, rgba(221,72,35,1) 0%, rgba(255,255,255,1) 100
 
 .info {
     display: flex; 
-    
+    color: white;
+    margin-bottom: 2px;
+}
+
+.info p {
+    margin-left: 10px;
 }
 
 .info i {
     margin-right: 30px;
+    width: 30px;
 }
