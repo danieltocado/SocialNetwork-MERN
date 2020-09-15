@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Post from "../../components/post/post"
+import Search from "../search/search";
 
 import "./widgets.scss";
 
@@ -17,6 +18,8 @@ function Widgets() {
 
   return (
     <div className="widgets">
+       
+      <Search/>
       <div className="widgets_container">
         <h2>Sugerencias para ti</h2>
 

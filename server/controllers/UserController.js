@@ -40,8 +40,8 @@ const UserController = {
 
   async getFive(req, res) {
     try {
-      const number = Math.floor(Math.random() * 20);
-      const users = await User.find().limit(5).skip(5).populate({path: 'posts'})
+      const number = Math.floor(Math.random() * 10);
+      const users = await User.find().skip(number).limit(5).populate({path: 'posts'})
       res.send(users);
     } catch (error) {
       console.error(error);

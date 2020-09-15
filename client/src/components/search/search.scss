@@ -1,0 +1,29 @@
+.search_dropdown {
+    z-index: 100;
+    position: absolute;
+    
+}
+
+.search_list {
+    display: flex;
+}
+
+.search_list_right {
+    margin-left: 10px;
+}
+
+.widgets_input input {
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin-right: 250px;
+}
+
+li {
+    padding: 10px;
+    background-color: var(--twitter-background);
+    
+}
+

@@ -5,21 +5,7 @@ import HomeRegister from "../../components/home-register/home-register.jsx";
 import "../index/index.scss";
 
 class Index extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      collapse: false,
-      isWideEnough: false,
-    };
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick() {
-    this.setState({
-      collapse: !this.state.collapse,
-    });
-  }
-
+ 
   render() {
     return (
       <div className="index_container">
